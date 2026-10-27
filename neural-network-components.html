@@ -1,0 +1,273 @@
+<!doctype html>
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Neural Network Components</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: a single column of stacked "slides", each a self-contained section,
+   with the architecture diagram as the centerpiece. */
+:root {
+  --bg: #f7f5f0;
+  --surface: #ffffff;
+  --fg: #1d1c1a;
+  --muted: #5d5a53;
+  --rule: #dcd7cc;
+  --accent: #2f5d8a;
+  --accent-soft: #dbe7f2;
+  --warm: #b5562b;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161514;
+    --surface: #1f1e1c;
+    --fg: #ece9e1;
+    --muted: #a7a298;
+    --rule: #3a3833;
+    --accent: #8fb6dc;
+    --accent-soft: #233244;
+    --warm: #e08a5e;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #161514;
+  --surface: #1f1e1c;
+  --fg: #ece9e1;
+  --muted: #a7a298;
+  --rule: #3a3833;
+  --accent: #8fb6dc;
+  --accent-soft: #233244;
+  --warm: #e08a5e;
+  color-scheme: dark;
+}
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: Inter, system-ui, sans-serif;
+  line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 24px;
+}
+main { max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; gap: 48px; }
+h1, h2, h3 { font-family: Newsreader, Georgia, serif; font-weight: 600; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); line-height: 1.1; }
+h2 { font-size: clamp(1.6rem, 4vw, 2.1rem); margin-bottom: 12px; }
+h3 { font-size: 1.25rem; margin-bottom: 6px; }
+p { margin: 0 0 12px; max-width: 65ch; }
+.eyebrow { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+section { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 28px; min-width: 0; }
+.hero { background: transparent; border: none; padding: 16px 0 0; }
+.hero p { color: var(--muted); font-size: 1.05rem; }
+.grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.card { border-top: 3px solid var(--accent); background: var(--bg); padding: 18px; border-radius: 4px; min-width: 0; }
+.card code, .formula { font-family: ui-monospace, Menlo, monospace; font-size: 0.9rem; background: var(--accent-soft); padding: 2px 6px; border-radius: 3px; }
+.formula { display: block; padding: 12px; margin: 12px 0; overflow-x: auto; }
+.diagram-wrap { overflow-x: auto; }
+svg { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+svg text { fill: var(--fg); font-family: Inter, sans-serif; font-size: 13px; }
+svg .label { fill: var(--muted); font-size: 12px; }
+.table-wrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { color: var(--muted); font-weight: 500; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; }
+ul { padding-left: 20px; margin: 0; }
+li { margin-bottom: 6px; }
+.summary { background: var(--accent-soft); border-color: transparent; }
+.summary ol { padding-left: 22px; }
+@media (prefers-reduced-motion: no-preference) {
+  section { transition: transform 0.2s ease; }
+}
+</style>
+
+<main>
+
+<header class="hero">
+  <div class="eyebrow">Neural Network Fundamentals</div>
+  <h1>Neural Network Components</h1>
+  <p>A visual walkthrough of the parts that make a neural network learn: layers, neurons, weights, activation functions, loss functions, and optimization algorithms. Each part is defined, placed in the architecture, and tied to what it does during training.</p>
+</header>
+
+<section>
+  <div class="eyebrow">Artifact details</div>
+  <h2>About this artifact</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Introduction</h3>
+      <p>This page explains the core components of a neural network in plain language and shows how they fit together in a fully connected architecture.</p>
+    </div>
+    <div class="card">
+      <h3>Description</h3>
+      <p>A diagram of data flowing from input to output, followed by definitions of layers, neurons, weights, activation functions, loss functions, and optimizers, and a summary.</p>
+    </div>
+    <div class="card">
+      <h3>Objective</h3>
+      <p>To define each neural network component clearly, illustrate how they connect, and explain the role each one plays during training.</p>
+    </div>
+    <div class="card">
+      <h3>Process</h3>
+      <p>I studied the course lessons on neural network components and used the TensorFlow Neural Network Playground to test how data, layers, and settings change model behavior. I then turned those concepts into a visual explanation with a diagram and summary.</p>
+    </div>
+    <div class="card">
+      <h3>Tools and technologies</h3>
+      <p>HTML, CSS, and inline SVG for the diagram and layout; TensorFlow Neural Network Playground for hands-on experimentation.</p>
+    </div>
+    <div class="card">
+      <h3>Value proposition</h3>
+      <p>Visual, concise explanations make it easier to understand and communicate how neural networks learn, which is useful for technical teams and for leaders who make AI decisions.</p>
+    </div>
+    <div class="card">
+      <h3>Unique value</h3>
+      <p>The page pairs each component with a formula or concrete example so readers can connect the vocabulary to what the model actually computes.</p>
+    </div>
+    <div class="card">
+      <h3>Relevance</h3>
+      <p>Understanding these components is the foundation for building, debugging, and explaining any neural network model.</p>
+    </div>
+    <div class="card">
+      <h3>References</h3>
+      <p>Course lessons on neural network components; TensorFlow Neural Network Playground (playground.tensorflow.org).</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Architecture</div>
+  <h2>How data flows through a network</h2>
+  <p>Data enters at the input layer, passes through one or more hidden layers where each neuron combines and transforms it, and leaves at the output layer as a prediction. Training compares that prediction with the true answer and sends a correction backward through the network.</p>
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 640 340" role="img" aria-label="Diagram of a fully connected network with 3 input neurons, 4 hidden neurons, 4 hidden neurons, and 2 output neurons">
+      <g stroke="var(--rule)" stroke-width="1.2" fill="none">
+        <!-- input to hidden 1 -->
+        <path d="M110,70 L260,60"/><path d="M110,70 L260,130"/><path d="M110,70 L260,200"/><path d="M110,70 L260,270"/>
+        <path d="M110,170 L260,60"/><path d="M110,170 L260,130"/><path d="M110,170 L260,200"/><path d="M110,170 L260,270"/>
+        <path d="M110,270 L260,60"/><path d="M110,270 L260,130"/><path d="M110,270 L260,200"/><path d="M110,270 L260,270"/>
+        <!-- hidden 1 to hidden 2 -->
+        <path d="M260,60 L400,60"/><path d="M260,60 L400,130"/><path d="M260,60 L400,200"/><path d="M260,60 L400,270"/>
+        <path d="M260,130 L400,60"/><path d="M260,130 L400,130"/><path d="M260,130 L400,200"/><path d="M260,130 L400,270"/>
+        <path d="M260,200 L400,60"/><path d="M260,200 L400,130"/><path d="M260,200 L400,200"/><path d="M260,200 L400,270"/>
+        <path d="M260,270 L400,60"/><path d="M260,270 L400,130"/><path d="M260,270 L400,200"/><path d="M260,270 L400,270"/>
+        <!-- hidden 2 to output -->
+        <path d="M400,60 L530,120"/><path d="M400,130 L530,120"/><path d="M400,200 L530,120"/><path d="M400,270 L530,120"/>
+        <path d="M400,60 L530,220"/><path d="M400,130 L530,220"/><path d="M400,200 L530,220"/><path d="M400,270 L530,220"/>
+      </g>
+      <g fill="var(--accent)">
+        <circle cx="110" cy="70" r="16"/><circle cx="110" cy="170" r="16"/><circle cx="110" cy="270" r="16"/>
+        <circle cx="260" cy="60" r="16"/><circle cx="260" cy="130" r="16"/><circle cx="260" cy="200" r="16"/><circle cx="260" cy="270" r="16"/>
+        <circle cx="400" cy="60" r="16"/><circle cx="400" cy="130" r="16"/><circle cx="400" cy="200" r="16"/><circle cx="400" cy="270" r="16"/>
+        <circle cx="530" cy="120" r="16" fill="var(--warm)"/><circle cx="530" cy="220" r="16" fill="var(--warm)"/>
+      </g>
+      <text x="110" y="318" text-anchor="middle" class="label">Input layer</text>
+      <text x="260" y="318" text-anchor="middle" class="label">Hidden layer 1</text>
+      <text x="400" y="318" text-anchor="middle" class="label">Hidden layer 2</text>
+      <text x="530" y="318" text-anchor="middle" class="label">Output layer</text>
+      <text x="110" y="40" text-anchor="middle">x₁ x₂ x₃</text>
+      <text x="530" y="90" text-anchor="middle" class="label">ŷ₁</text>
+      <text x="530" y="190" text-anchor="middle" class="label">ŷ₂</text>
+    </svg>
+  </div>
+  <p class="label" style="font-size:0.85rem">Each line is a weight. Each circle is a neuron. The arrows run forward during prediction and backward during training.</p>
+</section>
+
+<section>
+  <div class="eyebrow">Component 1 and 2</div>
+  <h2>Layers and neurons</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Layers</h3>
+      <p>A layer is a group of neurons that receive the same input and produce the same kind of output. The input layer holds the raw features, hidden layers transform them, and the output layer gives the final prediction. More layers let a network learn more abstract patterns, at the cost of more computation.</p>
+    </div>
+    <div class="card">
+      <h3>Neurons</h3>
+      <p>A neuron takes a weighted sum of its inputs, adds a bias, and passes the result through an activation function.</p>
+      <span class="formula">output = f(w₁x₁ + w₂x₂ + … + b)</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Component 3</div>
+  <h2>Weights and biases</h2>
+  <p>Weights are the learned numbers that set how strongly one neuron's output influences the next. A large positive weight amplifies a signal, a negative weight reverses it, and a weight near zero nearly ignores it. The bias shifts the neuron's threshold so it can fire even when inputs are small. Training consists of adjusting these values until predictions improve.</p>
+</section>
+
+<section>
+  <div class="eyebrow">Component 4</div>
+  <h2>Activation functions</h2>
+  <p>Activation functions add non-linearity. Without them, a stack of layers collapses into a single linear transformation, no matter how deep the network is.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Function</th><th>Formula</th><th>Output range</th><th>Typical use</th></tr></thead>
+      <tbody>
+        <tr><td>ReLU</td><td><code>max(0, x)</code></td><td>0 to ∞</td><td>Hidden layers in most modern networks</td></tr>
+        <tr><td>Sigmoid</td><td><code>1 / (1 + e⁻ˣ)</code></td><td>0 to 1</td><td>Binary output probability</td></tr>
+        <tr><td>Tanh</td><td><code>(eˣ − e⁻ˣ) / (eˣ + e⁻ˣ)</code></td><td>−1 to 1</td><td>Centered hidden activations</td></tr>
+        <tr><td>Softmax</td><td><code>eˣⁱ / Σ eˣʲ</code></td><td>Probabilities summing to 1</td><td>Multi-class output</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Component 5</div>
+  <h2>Loss functions</h2>
+  <p>A loss function converts the gap between prediction and truth into a single number. Lower is better, and that number is what training tries to reduce.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>Mean squared error</h3>
+      <p>For regression, such as predicting a price. It averages the squared differences, so large mistakes are penalized heavily.</p>
+      <span class="formula">MSE = (1/n) Σ (yᵢ − ŷᵢ)²</span>
+    </div>
+    <div class="card">
+      <h3>Cross-entropy</h3>
+      <p>For classification. It measures how far the predicted probability is from the correct class, and punishes confident wrong answers strongly.</p>
+      <span class="formula">L = −Σ yᵢ log(ŷᵢ)</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Component 6</div>
+  <h2>Optimization algorithms</h2>
+  <p>Backpropagation computes how much each weight contributed to the loss, expressed as a gradient. An optimizer uses those gradients to update the weights. The learning rate controls the size of each step: too large and training overshoots, too small and it crawls.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>Gradient descent</h3>
+      <p>Moves every weight a small step in the direction that lowers the loss, using the full dataset for each step.</p>
+    </div>
+    <div class="card">
+      <h3>Stochastic gradient descent</h3>
+      <p>Updates the weights using one example or a small batch at a time. Each step is noisier but much faster, and the noise can help escape poor solutions.</p>
+    </div>
+    <div class="card">
+      <h3>Adam</h3>
+      <p>Adapts the step size for each weight using running averages of past gradients. It often works well with little tuning, which makes it a common default.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Playground practice</div>
+  <h2>What changes when you experiment</h2>
+  <p>In the TensorFlow Neural Network Playground, the same data can produce very different results depending on the settings. Record your own results here after running the experiments.</p>
+  <ul>
+    <li><strong>Noise:</strong> [Your observation on how noise changed training time and performance]</li>
+    <li><strong>Layers and neurons:</strong> [Your observation on how layers and neurons changed the boundary and fit]</li>
+    <li><strong>Input features:</strong> [Your observation on how added features changed results]</li>
+    <li><strong>Learning rate and activation:</strong> [Your observation on how these settings changed the loss and boundary]</li>
+  </ul>
+</section>
+
+<section class="summary">
+  <div class="eyebrow">Summary</div>
+  <h2>Why visualizing neural networks matters</h2>
+  <p>A diagram makes the flow of data and the role of each component visible at a glance. Seeing the layers, weights, and gradients together makes it easier to diagnose why a model underperforms and to explain its behavior to others.</p>
+  <ol>
+    <li>Every neuron computes a weighted sum, then applies an activation function.</li>
+    <li>Activations provide the non-linearity that gives depth its value.</li>
+    <li>The loss function defines what "good" means for the task.</li>
+    <li>Optimizers turn gradients into weight updates, and the learning rate governs how big each update is.</li>
+  </ol>
+</section>
+
+</main>
