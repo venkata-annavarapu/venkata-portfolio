@@ -1,0 +1,129 @@
+<!doctype html>
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Venkata Annavarapu Portfolio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Inter:wght@400;500;600&display=swap">
+<style>
+:root {
+  --bg: #f7f5f0; --surface: #ffffff; --fg: #1d1c1a; --muted: #5d5a53;
+  --rule: #dcd7cc; --accent: #2f5d8a; --accent-soft: #dbe7f2;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161514; --surface: #1f1e1c; --fg: #ece9e1; --muted: #a7a298;
+    --rule: #3a3833; --accent: #8fb6dc; --accent-soft: #233244; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #161514; --surface: #1f1e1c; --fg: #ece9e1; --muted: #a7a298;
+  --rule: #3a3833; --accent: #8fb6dc; --accent-soft: #233244; color-scheme: dark;
+}
+body {
+  background: var(--bg); color: var(--fg); font-family: Inter, system-ui, sans-serif;
+  line-height: 1.6; padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 24px;
+}
+main { max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
+h1, h2, h3 { font-family: Newsreader, Georgia, serif; font-weight: 600; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.2rem, 6vw, 3.2rem); line-height: 1.1; }
+h2 { font-size: clamp(1.5rem, 4vw, 2rem); margin-bottom: 12px; }
+h3 { font-size: 1.2rem; margin-bottom: 8px; }
+p { margin: 0 0 12px; max-width: 65ch; }
+.eyebrow { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+section { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 28px; min-width: 0; }
+.hero { background: transparent; border: none; padding: 8px 0 0; }
+.hero p { color: var(--muted); font-size: 1.05rem; }
+dl { display: grid; grid-template-columns: minmax(120px, max-content) 1fr; gap: 8px 16px; margin: 0; }
+dt { color: var(--muted); font-weight: 500; }
+dd { margin: 0; min-width: 0; }
+.artifact { border-top: 3px solid var(--accent); }
+ul { padding-left: 20px; margin: 0; }
+li { margin-bottom: 6px; }
+.draft { background: var(--accent-soft); padding: 12px 16px; border-radius: 4px; font-size: 0.9rem; }
+</style>
+
+<main>
+
+<header class="hero">
+  <div class="eyebrow">Professional Portfolio</div>
+  <h1>Venkata Annavarapu</h1>
+  <p>Java Full Stack Developer and AI/ML learner focused on healthcare technology.</p>
+</header>
+
+<section>
+  <div class="eyebrow">Professional bio</div>
+  <h2>About me</h2>
+  <p>I am a Java full stack developer with over seven years of experience building healthcare systems, including claims and eligibility platforms at Change Healthcare and Centene Corporation. My work spans Agile delivery and microservices architecture. I am now deepening my understanding of AI and machine learning so I can bring that engineering background to data-driven healthcare products.</p>
+  <p class="draft">Draft: review and edit this bio to match your own voice and goals.</p>
+</section>
+
+<section>
+  <div class="eyebrow">Personal value proposition</div>
+  <h2>What I bring</h2>
+  <p>I connect production engineering experience in regulated healthcare systems with applied AI understanding. That means choosing the right algorithm for the data, weighing compliance and explainability, and explaining the trade-offs to both engineers and leaders.</p>
+  <p class="draft">Draft: adjust to reflect your own strengths and goals.</p>
+</section>
+
+<section class="artifact">
+  <div class="eyebrow">Artifact 1 of 2</div>
+  <h2>Machine Learning Algorithms: A Visual Framework</h2>
+  <dl>
+    <dt>Introduction</dt>
+    <dd>Algorithms determine how a model interprets data and makes predictions, so choosing one well is a core professional skill. This framework organizes common machine learning algorithms for tabular data, computer vision, natural language processing, and generative AI.</dd>
+    <dt>Description</dt>
+    <dd>A visual framework with three lenses: learning style (supervised, unsupervised, and related paradigms), application domain, and task functionality. It includes an algorithm-by-domain matrix, plain-language algorithm profiles, real-world use cases, and a practical selection guide.</dd>
+    <dt>Objective</dt>
+    <dd>Identify and categorize key algorithms, show how algorithm types relate to their domains, provide practical examples, and communicate algorithmic significance to technical and non-technical readers.</dd>
+    <dt>Process</dt>
+    <dd>I organized algorithms along three lenses so each one could be placed by how it learns, where it is applied, and what it produces. I then described each family, its strengths and limitations, and concrete use cases in each domain.</dd>
+    <dt>Tools and technologies</dt>
+    <dd>[Add the tools you used to create the document, for example Microsoft Word.]</dd>
+    <dt>Value proposition</dt>
+    <dd>Choosing an algorithm is a fairness, compliance, and business decision as well as a technical one. This framework gives engineers, analysts, and decision-makers a shared vocabulary for reasoning about the same problem.</dd>
+    <dt>Unique value</dt>
+    <dd>The algorithm-by-domain matrix and the selection guide turn a broad field into a starting map, and they state trade-offs honestly instead of ranking algorithms in isolation.</dd>
+    <dt>Relevance</dt>
+    <dd>Applied machine learning and technical leadership roles require matching methods to problems and explaining why. This artifact demonstrates that skill.</dd>
+    <dt>References</dt>
+    <dd>
+      <ul>
+        <li>Hastie, Tibshirani, &amp; Friedman (2009). <em>The Elements of Statistical Learning</em> (2nd ed.). Springer.</li>
+        <li>Goodfellow, Bengio, &amp; Courville (2016). <em>Deep Learning</em>. MIT Press.</li>
+        <li>Goodfellow et al. (2014). Generative adversarial nets. <em>NeurIPS</em>.</li>
+        <li>Krizhevsky, Sutskever, &amp; Hinton (2012). ImageNet classification with deep convolutional neural networks. <em>NeurIPS</em>.</li>
+        <li>Vaswani et al. (2017). Attention is all you need. <em>NeurIPS</em>.</li>
+        <li>Devlin et al. (2019). BERT: Pre-training of deep bidirectional transformers for language understanding. <em>NAACL-HLT</em>.</li>
+        <li>Ho, Jain, &amp; Abbeel (2020). Denoising diffusion probabilistic models. <em>NeurIPS</em>.</li>
+        <li>Rombach et al. (2022). High-resolution image synthesis with latent diffusion models. <em>CVPR</em>.</li>
+      </ul>
+    </dd>
+  </dl>
+</section>
+
+<section class="artifact">
+  <div class="eyebrow">Artifact 2 of 2</div>
+  <h2>Neural Network Components</h2>
+  <dl>
+    <dt>Introduction</dt>
+    <dd>A visual walkthrough of the parts that make a neural network learn, for readers new to the topic.</dd>
+    <dt>Description</dt>
+    <dd>An architecture diagram showing data flowing from input to output, followed by definitions of layers, neurons, weights, activation functions, loss functions, and optimization algorithms, with a summary.</dd>
+    <dt>Objective</dt>
+    <dd>Define each neural network component clearly, illustrate how they connect, and explain the role each plays during training.</dd>
+    <dt>Process</dt>
+    <dd>I studied the course lessons on neural network components and used the TensorFlow Neural Network Playground to test how data, layers, and settings change model behavior. I then turned those concepts into a visual explanation.</dd>
+    <dt>Tools and technologies</dt>
+    <dd>HTML, CSS, and inline SVG; TensorFlow Neural Network Playground.</dd>
+    <dt>Value proposition</dt>
+    <dd>Concise visual explanations help technical teams and decision-makers understand how neural networks learn.</dd>
+    <dt>Unique value</dt>
+    <dd>Each component is paired with a formula or concrete example, so readers can connect the vocabulary to what the model computes.</dd>
+    <dt>Relevance</dt>
+    <dd>These components are the foundation for building, debugging, and explaining any neural network.</dd>
+    <dt>References</dt>
+    <dd>Course lessons on neural network components; TensorFlow Neural Network Playground (playground.tensorflow.org).</dd>
+  </dl>
+  <p style="margin-top:16px"><a href="https://claude.ai/artifact/8VNMhpaLQ836ZyV3d9rZXN" target="_blank" rel="noopener">View the full Neural Network Components page</a></p>
+</section>
+
+</main>
