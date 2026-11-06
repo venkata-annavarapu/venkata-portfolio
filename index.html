@@ -1,129 +1,17 @@
 <!doctype html>
-<meta name="claude:viewport-fit-sides" content="cover">
-<title>Venkata Annavarapu Portfolio</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Inter:wght@400;500;600&display=swap">
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A portfolio visual explaining large language model training, infrastructure, energy, time, and disclosed cost examples.">
+<title>How Generative LLMs Are Trained | Portfolio Project</title>
 <style>
-:root {
-  --bg: #f7f5f0; --surface: #ffffff; --fg: #1d1c1a; --muted: #5d5a53;
-  --rule: #dcd7cc; --accent: #2f5d8a; --accent-soft: #dbe7f2;
-  color-scheme: light;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #161514; --surface: #1f1e1c; --fg: #ece9e1; --muted: #a7a298;
-    --rule: #3a3833; --accent: #8fb6dc; --accent-soft: #233244; color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #161514; --surface: #1f1e1c; --fg: #ece9e1; --muted: #a7a298;
-  --rule: #3a3833; --accent: #8fb6dc; --accent-soft: #233244; color-scheme: dark;
-}
-body {
-  background: var(--bg); color: var(--fg); font-family: Inter, system-ui, sans-serif;
-  line-height: 1.6; padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 24px;
-}
-main { max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
-h1, h2, h3 { font-family: Newsreader, Georgia, serif; font-weight: 600; text-wrap: balance; margin: 0; }
-h1 { font-size: clamp(2.2rem, 6vw, 3.2rem); line-height: 1.1; }
-h2 { font-size: clamp(1.5rem, 4vw, 2rem); margin-bottom: 12px; }
-h3 { font-size: 1.2rem; margin-bottom: 8px; }
-p { margin: 0 0 12px; max-width: 65ch; }
-.eyebrow { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
-section { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 28px; min-width: 0; }
-.hero { background: transparent; border: none; padding: 8px 0 0; }
-.hero p { color: var(--muted); font-size: 1.05rem; }
-dl { display: grid; grid-template-columns: minmax(120px, max-content) 1fr; gap: 8px 16px; margin: 0; }
-dt { color: var(--muted); font-weight: 500; }
-dd { margin: 0; min-width: 0; }
-.artifact { border-top: 3px solid var(--accent); }
-ul { padding-left: 20px; margin: 0; }
-li { margin-bottom: 6px; }
-.draft { background: var(--accent-soft); padding: 12px 16px; border-radius: 4px; font-size: 0.9rem; }
+:root{--ink:#142b3b;--teal:#087e8b;--orange:#e79548;--paper:#f4f2ec;--muted:#556a77;--line:#d4ddda;--white:#fff}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 Arial,Helvetica,sans-serif}a{color:#056875}a:focus-visible{outline:3px solid var(--orange);outline-offset:3px}.wrap{max-width:1100px;margin:auto;padding:32px 24px 60px}.topline{height:8px;background:var(--teal)}header{padding:54px 0 38px;border-bottom:1px solid var(--line)}.eyebrow{color:var(--teal);font-size:.82rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}h1{font-size:clamp(2.2rem,6vw,4.4rem);line-height:1.02;max-width:850px;margin:.5rem 0 1rem}h2{font-size:1.7rem;margin:0 0 12px}h3{font-size:1.15rem;margin:0 0 8px}p{margin:0 0 14px}.lede{max-width:760px;color:var(--muted);font-size:1.15rem}.links{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}.button{display:inline-block;background:var(--ink);color:white;padding:12px 16px;border-radius:4px;text-decoration:none;font-weight:700}.button.secondary{background:transparent;color:var(--ink);border:1px solid var(--ink)}section{padding:38px 0;border-bottom:1px solid var(--line)}.skills{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 0;padding:0;list-style:none}.skills li{border-left:4px solid var(--teal);padding:6px 10px;background:#e6eeeb;font-size:.95rem}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}.card{padding:18px;background:var(--white);border-top:4px solid var(--teal)}.card:nth-child(2){border-color:var(--orange)}.card:nth-child(3){border-color:#6d7f45}.card p{color:var(--muted)}figure{margin:22px 0 0}figure img{width:100%;height:auto;display:block;border:1px solid var(--line);background:white}figcaption{font-size:.9rem;color:var(--muted);margin-top:8px}.caveat{padding:18px;border-left:5px solid var(--orange);background:#fff9ef}.sources li{margin:8px 0;color:var(--muted)}footer{padding-top:24px;color:var(--muted);font-size:.9rem}@media(max-width:600px){.wrap{padding-left:16px;padding-right:16px}header{padding-top:38px}}
 </style>
-
-<main>
-
-<header class="hero">
-  <div class="eyebrow">Professional Portfolio</div>
-  <h1>Venkata Annavarapu</h1>
-  <p>Java Full Stack Developer and AI/ML learner focused on healthcare technology.</p>
-</header>
-
-<section>
-  <div class="eyebrow">Professional bio</div>
-  <h2>About me</h2>
-  <p>I am a Java full stack developer with over seven years of experience building healthcare systems, including claims and eligibility platforms at Change Healthcare and Centene Corporation. I work across Agile delivery and microservices architecture. I am now expanding my skills in AI and machine learning to apply my engineering background to data-driven healthcare products.</p>
-  
-</section>
-
-<section>
-  <div class="eyebrow">Personal value proposition</div>
-  <h2>What I bring</h2>
-  <p>I combine hands-on engineering experience in regulated healthcare systems with a growing understanding of AI and machine learning. I can help teams choose the right algorithm for their data, consider compliance and explainability, and explain the trade-offs to both engineers and leaders.</p>
-  
-</section>
-
-<section class="artifact">
-  <div class="eyebrow">Artifact 1 of 2</div>
-  <h2>Machine Learning Algorithms: A Visual Framework</h2>
-  <dl>
-    <dt>Introduction</dt>
-    <dd>Algorithms determine how a model interprets data and makes predictions, so choosing one well is a core professional skill. This framework organizes common machine learning algorithms for tabular data, computer vision, natural language processing, and generative AI.</dd>
-    <dt>Description</dt>
-    <dd>A visual framework with three lenses: learning style (supervised, unsupervised, and related paradigms), application domain, and task functionality. It includes an algorithm-by-domain matrix, plain-language algorithm profiles, real-world use cases, and a practical selection guide.</dd>
-    <dt>Objective</dt>
-    <dd>Identify and categorize key algorithms, show how algorithm types relate to their domains, provide practical examples, and communicate algorithmic significance to technical and non-technical readers.</dd>
-    <dt>Process</dt>
-    <dd>I organized algorithms along three lenses so each one could be placed by how it learns, where it is applied, and what it produces. I then described each family, its strengths and limitations, and concrete use cases in each domain.</dd>
-    <dt>Tools and technologies</dt>
-    <dd>[Claude (AI assistant) to help structure the content, and Microsoft Word to format the document.]</dd>
-    <dt>Value proposition</dt>
-    <dd>Choosing an algorithm is a fairness, compliance, and business decision as well as a technical one. This framework gives engineers, analysts, and decision-makers a shared vocabulary for reasoning about the same problem.</dd>
-    <dt>Unique value</dt>
-    <dd>The algorithm-by-domain matrix and the selection guide turn a broad field into a starting map, and they state trade-offs honestly instead of ranking algorithms in isolation.</dd>
-    <dt>Relevance</dt>
-    <dd>Applied machine learning and technical leadership roles require matching methods to problems and explaining why. This artifact demonstrates that skill.</dd>
-    <dt>References</dt>
-    <dd>
-      <ul>
-        <li>Hastie, Tibshirani, &amp; Friedman (2009). <em>The Elements of Statistical Learning</em> (2nd ed.). Springer.</li>
-        <li>Goodfellow, Bengio, &amp; Courville (2016). <em>Deep Learning</em>. MIT Press.</li>
-        <li>Goodfellow et al. (2014). Generative adversarial nets. <em>NeurIPS</em>.</li>
-        <li>Krizhevsky, Sutskever, &amp; Hinton (2012). ImageNet classification with deep convolutional neural networks. <em>NeurIPS</em>.</li>
-        <li>Vaswani et al. (2017). Attention is all you need. <em>NeurIPS</em>.</li>
-        <li>Devlin et al. (2019). BERT: Pre-training of deep bidirectional transformers for language understanding. <em>NAACL-HLT</em>.</li>
-        <li>Ho, Jain, &amp; Abbeel (2020). Denoising diffusion probabilistic models. <em>NeurIPS</em>.</li>
-        <li>Rombach et al. (2022). High-resolution image synthesis with latent diffusion models. <em>CVPR</em>.</li>
-      </ul>
-    </dd>
-  </dl>
-</section>
-
-<section class="artifact">
-  <div class="eyebrow">Artifact 2 of 2</div>
-  <h2>Neural Network Components</h2>
-  <dl>
-    <dt>Introduction</dt>
-    <dd>A visual walkthrough of the parts that make a neural network learn, for readers new to the topic.</dd>
-    <dt>Description</dt>
-    <dd>An architecture diagram showing data flowing from input to output, followed by definitions of layers, neurons, weights, activation functions, loss functions, and optimization algorithms, with a summary.</dd>
-    <dt>Objective</dt>
-    <dd>Define each neural network component clearly, illustrate how they connect, and explain the role each plays during training.</dd>
-    <dt>Process</dt>
-    <dd>I studied the course lessons on neural network components and used the TensorFlow Neural Network Playground to test how data, layers, and settings change model behavior. I then turned those concepts into a visual explanation.</dd>
-    <dt>Tools and technologies</dt>
-    <dd>HTML, CSS, and inline SVG; TensorFlow Neural Network Playground.</dd>
-    <dt>Value proposition</dt>
-    <dd>Concise visual explanations help technical teams and decision-makers understand how neural networks learn.</dd>
-    <dt>Unique value</dt>
-    <dd>Each component is paired with a formula or concrete example, so readers can connect the vocabulary to what the model computes.</dd>
-    <dt>Relevance</dt>
-    <dd>These components are the foundation for building, debugging, and explaining any neural network.</dd>
-    <dt>References</dt>
-    <dd>Course lessons on neural network components; TensorFlow Neural Network Playground (playground.tensorflow.org).</dd>
-  </dl>
-  <p style="margin-top:16px"><a href="neural-network-components.html">View the full Neural Network Components page</a></p>
-</section>
-
-</main>
+</head><body><div class="topline"></div><main class="wrap">
+<header><div class="eyebrow">AI / ML portfolio · visual research</div><h1>How Generative LLMs Are Trained</h1><p class="lede">A visual guide to the training pipeline, the infrastructure behind it, and what public disclosures reveal about model resources and costs.</p><div class="links"><a class="button" href="assets/llm-training-infographic.pptx" download>Download slide presentation</a><a class="button secondary" href="assets/explanatory-note.docx" download>Download explanatory note</a></div></header>
+<section aria-labelledby="project"><h2 id="project">Project overview</h2><div class="grid"><div><h3>Challenge</h3><p>Training a large language model involves many stages and resource categories. Public information is incomplete and often reports different measures, which makes headline cost numbers easy to misread.</p></div><div><h3>Approach</h3><p>I organized the subject as a six-step training and deployment process, then mapped the resource categories and compared examples with their disclosure status shown alongside the figures.</p></div><div><h3>Skills demonstrated</h3><p>Research synthesis, AI/ML systems literacy, data and infrastructure reasoning, evidence qualification, and visual communication for a broad audience.</p></div></div><ul class="skills"><li>LLM training lifecycle</li><li>GPU and energy metrics</li><li>Source evaluation</li><li>Information design</li><li>Accessibility-first layout</li></ul></section>
+<section aria-labelledby="pipeline"><h2 id="pipeline">Training lifecycle</h2><p>Data collection and preparation feed pretraining; post-training shapes assistant behavior; evaluation and red-teaming guide iteration; deployment adds serving, safeguards and monitoring.</p><figure><img src="assets/process.png" alt="Slide 1: six stages from collecting and preparing data through pretraining, post-training, evaluation, deployment and monitoring. An annotation shows that evaluation can return the process to earlier stages."><figcaption>Slide 1 · Process overview</figcaption></figure></section>
+<section aria-labelledby="resources"><h2 id="resources">What uses resources?</h2><p>Data quality, accelerator time, networking, electricity, cooling, skilled labor and repeated experiments all contribute to model development and operating cost.</p><figure><img src="assets/resources.png" alt="Slide 2: resource categories for data, compute, energy, and time and people, with a note that training cost differs from total development cost."><figcaption>Slide 2 · Resource categories</figcaption></figure></section>
+<section aria-labelledby="examples"><h2 id="examples">Examples and disclosure limits</h2><p>The figures are labeled by source and scope. They should not be treated as equivalent accounting measures.</p><div class="caveat"><strong>Key reading note:</strong> Meta publishes training metrics for Llama 3.1 405B; Stanford’s GPT-4 figure is a third-party compute estimate; Anthropic’s Claude 3 card does not report comparable compute or cost totals.</div><figure><img src="assets/examples.png" alt="Slide 3: comparison of Llama 3.1 405B public training metrics, an estimated GPT-4 compute cost, and Claude 3 resource details marked not disclosed."><figcaption>Slide 3 · Public examples with caveats</figcaption></figure></section>
+<section aria-labelledby="sources"><h2 id="sources">Sources</h2><ul class="sources"><li><a href="https://www.youtube.com/watch?v=5sLYAQS9sWQ">IBM Technology · How Large Language Models Work</a></li><li><a href="https://www.youtube.com/watch?v=OGmDr8TLtTo">Eye on Tech · What is ChatGPT? (In About A Minute)</a></li><li><a href="https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/">Stephen Wolfram · What Is ChatGPT Doing … and Why Does It Work?</a></li><li><a href="https://help.openai.com/en/articles/7842364-how-chatgpt-and-our-foundation-models-are-developed">OpenAI · How ChatGPT and our foundation models are developed</a></li><li><a href="https://huggingface.co/meta-llama/Llama-3.1-405B">Meta · Llama 3.1 405B model card</a></li><li><a href="https://hai.stanford.edu/assets/files/hai_ai_index_report_2025_chapter1_final.pdf">Stanford HAI · AI Index Report 2025, Chapter 1</a></li><li><a href="https://www-cdn.anthropic.com/de8ba9b01c9ab7cbabf5c33b80b7bbc618857627/Model_Card_Claude_3.pdf">Anthropic · Claude 3 Model Card</a></li></ul></section>
+<footer>Portfolio artifact · Generative AI infrastructure and training</footer></main></body></html>
