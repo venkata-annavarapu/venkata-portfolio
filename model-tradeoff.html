@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A sourced comparison of pre-trained NLP, vision, and tabular models by size, benchmark quality, speed, deployment fit, and explainability considerations.">
+  <title>Pre-Trained Model Trade-Offs</title>
+  <style>
+    :root { color-scheme: light; --ink:#152b3c; --muted:#526572; --paper:#f6f4ef; --blue:#2878a5; --green:#27846f; --orange:#a65e1e; --line:#d8e0e3; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif; }
+    main { max-width:1120px; margin:0 auto; padding:40px 24px 64px; }
+    header { border-bottom:1px solid var(--line); padding-bottom:24px; margin-bottom:24px; }
+    h1 { font-size:clamp(2rem,5vw,3.2rem); line-height:1.08; margin:0 0 12px; letter-spacing:-.03em; }
+    .lede { max-width:800px; color:var(--muted); font-size:1.1rem; margin:0; }
+    .note { background:#eaf0f2; border-left:4px solid var(--blue); padding:14px 18px; margin:22px 0; }
+    figure { margin:28px 0 12px; }
+    figure img { display:block; width:100%; height:auto; }
+    figcaption { color:var(--muted); font-size:.93rem; margin-top:8px; }
+    .actions { display:flex; gap:12px; flex-wrap:wrap; margin:20px 0 38px; }
+    a.button { color:#fff; background:var(--ink); padding:10px 16px; border-radius:7px; text-decoration:none; font-weight:650; }
+    a.button.secondary { background:#e1e9eb; color:var(--ink); }
+    section { margin:38px 0; }
+    h2 { font-size:1.55rem; margin:0 0 12px; }
+    h3 { font-size:1.08rem; margin:22px 0 6px; }
+    p { max-width:860px; margin:8px 0; }
+    ul { max-width:900px; padding-left:24px; }
+    li { margin:6px 0; }
+    .domain { display:inline-block; font-weight:700; margin-right:6px; }
+    .nlp { color:var(--blue); } .vision { color:var(--green); } .tabular { color:var(--orange); }
+    footer { border-top:1px solid var(--line); color:var(--muted); padding-top:18px; font-size:.92rem; }
+    @media (max-width:600px) { main { padding:28px 16px 48px; } .note { padding:12px 14px; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Pre-Trained Model Trade-Offs</h1>
+    <p class="lede">A benchmark-based selection guide across language, computer vision, and tabular classification. The comparison focuses on size, task quality, speed, deployment fit, and explainability.</p>
+  </header>
+
+  <p class="note"><strong>How to read this:</strong> benchmark scores are task-specific. Speed results retain the hardware and test conditions reported by each paper; they should not be ranked as though they came from one standardized test.</p>
+
+  <figure>
+    <img src="assets/decision-matrix.svg" alt="Decision matrix comparing BERT-base, DistilBERT, MobileNetV2, EfficientNet-B0, and TabPFN. It lists parameter counts, estimated FP32 weight memory, benchmark results, reported inference speeds, and deployment fit. Speed tests use different hardware and methods." />
+    <figcaption>Decision matrix. Weight-memory values are estimates for FP32 parameters only; actual serving memory is higher.</figcaption>
+  </figure>
+
+  <nav class="actions" aria-label="Project files">
+    <a class="button" href="assets/Model-Tradeoffs-Explanatory-Note.md">Read the explanatory document</a>
+    <a class="button secondary" href="assets/decision-matrix.svg">Open the graphic</a>
+  </nav>
+
+  <section>
+    <h2>What the comparison shows</h2>
+    <ul>
+      <li><span class="domain nlp">NLP:</span>DistilBERT uses fewer parameters and ran faster than BERT-base in the cited CPU test, while scoring lower on GLUE.</li>
+      <li><span class="domain vision">Vision:</span>MobileNetV2 is a compact edge-oriented model. EfficientNet-B0 reports higher ImageNet top-1 accuracy, but its latency figures use a different hardware and batch setup.</li>
+      <li><span class="domain tabular">Tabular:</span>TabPFN performs strongly on the paper’s small numerical benchmark; its dataset limits and weaker performance with missing or categorical inputs matter for deployment.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Trustworthiness needs more than one score</h2>
+    <p>Task quality, calibration, robustness, safety, subgroup fairness, and explanation fidelity are distinct evaluation questions. Attention maps, feature-importance displays, or generated reasoning text can support investigation, but they are not automatically evidence that an explanation faithfully represents a model’s internal reasoning. Human review remains important where model errors can have meaningful consequences.</p>
+  </section>
+
+  <section>
+    <h2>Selection takeaway</h2>
+    <p>There is no universal winner. Narrow candidates using published results, then test them on representative data with the intended hardware, latency targets, memory limits, explanation needs, and error costs.</p>
+  </section>
+
+  <footer>
+    <p>Prepared as an AI/ML portfolio artifact. Full methodology, recommendations, reflection, and source links are in the explanatory document.</p>
+  </footer>
+</main>
+</body>
+</html>
+
+
