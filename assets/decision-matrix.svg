@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1270" viewBox="0 0 1500 1270" role="img" aria-labelledby="title desc">
+  <title id="title">Pre-trained model trade-offs across NLP, vision, and tabular classification</title>
+  <desc id="desc">A decision matrix comparing BERT-base, DistilBERT, MobileNetV2, EfficientNet-B0, and TabPFN by model size, benchmark results, reported speed, and deployment fit. Benchmark conditions differ and should not be compared across domains.</desc>
+  <rect width="1500" height="1270" fill="#f6f4ef"/>
+  <text x="64" y="76" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#152b3c">Pre-trained model trade-offs</text>
+  <text x="66" y="115" font-family="Arial, sans-serif" font-size="19" fill="#465966">A benchmark-based selection guide across language, computer vision, and tabular classification</text>
+  <text x="66" y="166" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#465966">READING THE MATRIX</text>
+  <text x="248" y="166" font-family="Arial, sans-serif" font-size="15" fill="#465966">Size = parameters and estimated FP32 weights</text>
+  <text x="665" y="166" font-family="Arial, sans-serif" font-size="15" fill="#465966">Quality = domain-specific benchmark (not cross-domain comparable)</text>
+  <text x="66" y="194" font-family="Arial, sans-serif" font-size="15" fill="#465966">Speed = paper-reported test conditions; different devices, batch sizes, and tasks limit direct comparisons.</text>
+
+  <rect x="48" y="225" width="1404" height="56" rx="10" fill="#17364a"/>
+  <text x="72" y="260" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">DOMAIN / MODEL</text>
+  <text x="350" y="260" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">MODEL SIZE</text>
+  <text x="555" y="260" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">BENCHMARK RESULT</text>
+  <text x="805" y="260" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">REPORTED SPEED</text>
+  <text x="1160" y="260" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">DEPLOYMENT FIT</text>
+
+  <!-- BERT -->
+  <rect x="48" y="292" width="1404" height="164" rx="10" fill="#ffffff"/>
+  <rect x="48" y="292" width="10" height="164" rx="5" fill="#2878a5"/>
+  <text x="78" y="324" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#2878a5">NLP / LANGUAGE ENCODER</text>
+  <text x="78" y="357" font-family="Arial, sans-serif" font-size="21" font-weight="700" fill="#152b3c">BERT-base</text>
+  <text x="78" y="384" font-family="Arial, sans-serif" font-size="15" fill="#465966">Context-aware text representation</text>
+  <text x="350" y="342" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#152b3c">110M parameters</text>
+  <text x="350" y="370" font-family="Arial, sans-serif" font-size="15" fill="#465966">≈ 440 MB FP32 weights</text>
+  <text x="555" y="342" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#152b3c">GLUE score: 79.5</text>
+  <text x="555" y="370" font-family="Arial, sans-serif" font-size="15" fill="#465966">Aggregate task score</text>
+  <text x="805" y="335" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#152b3c">668 s, CPU</text>
+  <text x="805" y="360" font-family="Arial, sans-serif" font-size="14" fill="#465966">Full STS-B dev-set pass; batch 1</text>
+  <text x="805" y="383" font-family="Arial, sans-serif" font-size="14" fill="#465966">Intel Xeon E5-2690 v3</text>
+  <text x="1160" y="338" font-family="Arial, sans-serif" font-size="15" fill="#152b3c">Choose when language-task</text>
+  <text x="1160" y="360" font-family="Arial, sans-serif" font-size="15" fill="#152b3c">quality outweighs serving cost.</text>
+  <text x="1160" y="389" font-family="Arial, sans-serif" font-size="14" fill="#465966">Encoder; not a chat generator.</text>
+
+  <!-- DistilBERT -->
+  <rect x="48" y="466" width="1404" height="164" rx="10" fill="#ffffff"/>
+  <rect x="48" y="466" width="10" height="164" rx="5" fill="#2878a5"/>
+  <text x="78" y="498" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#2878a5">NLP / LANGUAGE ENCODER</text>
+  <text x="78" y="531" font-family="Arial, sans-serif" font-size="21" font-weight="700" fill="#152b3c">DistilBERT</text>
+  <text x="78" y="558" font-family="Arial, sans-serif" font-size="15" fill="#465966">Knowledge-distilled BERT variant</text>
+  <text x="350" y="516" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#152b3c">66M parameters</text>
+  <text x="350" y="544" font-family="Arial, sans-serif" font-size="15" fill="#465966">≈ 264 MB FP32 weights</text>
+  <text x="555" y="516" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#152b3c">GLUE score: 77.0</text>
+  <text x="555" y="544" font-family="Arial, sans-serif" font-size="15" fill="#465966">Aggregate task score</text>
+  <text x="805" y="509" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#152b3c">410 s, CPU</text>
+  <text x="805" y="534" font-family="Arial, sans-serif" font-size="14" fill="#465966">Same STS-B test setup as BERT-base</text>
+  <text x="805" y="557" font-family="Arial, sans-serif" font-size="14" fill="#465966">~39% less elapsed time in that test</text>
+  <text x="1160" y="512" font-family="Arial, sans-serif" font-size="15" fill="#152b3c">Choose for a smaller NLP</text>
+  <text x="1160" y="534" font-family="Arial, sans-serif" font-size="15" fill="#152b3c">footprint when its task score fits.</text>
+  <text x="1160" y="563" font-family="Arial, sans-serif" font-size="14" fill="#465966">Validate on your own workload.</text>
+
+  <!-- MobileNet -->
+  <rect x="48" y="640" width="1404" height="164" rx="10" fill="#ffffff"/>
+  <rect x="48" y="640" width="10" height="164" rx="5" fill="#27846f"/>
+  <text x="78" y="672" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#27846f">COMPUTER VISION / IMAGE CLASSIFIER</text>
+  <text x="78" y="705" font-family="Arial, sans-serif" font-size="21" font-weight="700" fill="#152b3c">MobileNetV2</text>
+  <text x="78" y="732" font-family="Arial, sans-serif" font-size="15" fill="#465966">Mobile and edge-oriented CNN</text>
+  <text x="350" y="690" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#152b3c">3.4M parameters</text>
+  <text x="350" y="718" font-family="Arial, sans-serif" font-size="15" fill="#465966">≈ 14 MB FP32 weights</text>
+  <text x="555" y="690" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#152b3c">ImageNet top-1: 72.0%</text>
+  <text x="555" y="718" font-family="Arial, sans-serif" font-size="15" fill="#465966">300M multiply-adds</text>
+  <text x="805" y="683" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#152b3c">75 ms / image</text>
+  <text x="805" y="708" font-family="Arial, sans-serif" font-size="14" fill="#465966">Pixel 1, one large CPU core</text>
+  <text x="805" y="731" font-family="Arial, sans-serif" font-size="14" fill="#465966">TensorFlow Lite; paper result</text>
+  <text x="1160" y="686" font-family="Arial, sans-serif" font-size="15" fill="#152b3c">Good edge candidate when</text>
+  <text x="1160" y="708" font-family="Arial, sans-serif" font-size="15" fill="#152b3c">compute and size are constrained.</text>
+  <text x="1160" y="737" font-family="Arial, sans-serif" font-size="14" fill="#465966">Rebenchmark on target hardware.</text>
+
+  <!-- EfficientNet -->
+  <rect x="48" y="814" width="1404" height="164" rx="10" fill="#ffffff"/>
+  <rect x="48" y="814" width="10" height="164" rx="5" fill="#27846f"/>
+  <text x="78" y="846" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#27846f">COMPUTER VISION / IMAGE CLASSIFIER</text>
+  <text x="78" y="879" font-family="Arial, sans-serif" font-size="21" font-weight="700" fill="#152b3c">EfficientNet-B0</text>
+  <text x="78" y="906" font-family="Arial, sans-serif" font-size="15" fill="#465966">Compound-scaled CNN baseline</text>
+  <text x="350" y="864" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#152b3c">5.3M parameters</text>
+  <text x="350" y="892" font-family="Arial, sans-serif" font-size="15" fill="#465966">≈ 21 MB FP32 weights</text>
+  <text x="555" y="864" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#152b3c">ImageNet top-1: 77.1%</text>
+  <text x="555" y="892" font-family="Arial, sans-serif" font-size="15" fill="#465966">0.39B FLOPs (paper)</text>
+  <text x="805" y="857" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#152b3c">13.4 ms TPUv3</text>
+  <text x="805" y="882" font-family="Arial, sans-serif" font-size="14" fill="#465966">38.1 ms V100; batch size 128</text>
+  <text x="805" y="905" font-family="Arial, sans-serif" font-size="14" fill="#465966">Separate accelerator benchmark</text>
+  <text x="1160" y="860" font-family="Arial, sans-serif" font-size="15" fill="#152b3c">Consider when ImageNet-like</text>
+  <text x="1160" y="882" font-family="Arial, sans-serif" font-size="15" fill="#152b3c">accuracy is worth added compute.</text>
+  <text x="1160" y="911" font-family="Arial, sans-serif" font-size="14" fill="#465966">Latency depends on device/runtime.</text>
+
+  <!-- TabPFN -->
+  <rect x="48" y="988" width="1404" height="178" rx="10" fill="#ffffff"/>
+  <rect x="48" y="988" width="10" height="178" rx="5" fill="#b46a27"/>
+  <text x="78" y="1020" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#a65e1e">TABULAR / SMALL CLASSIFICATION</text>
+  <text x="78" y="1053" font-family="Arial, sans-serif" font-size="21" font-weight="700" fill="#152b3c">TabPFN (v1 paper)</text>
+  <text x="78" y="1080" font-family="Arial, sans-serif" font-size="15" fill="#465966">Pre-trained in-context classifier</text>
+  <text x="350" y="1038" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#152b3c">25.82M parameters</text>
+  <text x="350" y="1066" font-family="Arial, sans-serif" font-size="15" fill="#465966">≈ 103 MB FP32 weights</text>
+  <text x="555" y="1038" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#152b3c">Mean ROC AUC: 0.934</text>
+  <text x="555" y="1064" font-family="Arial, sans-serif" font-size="14" fill="#465966">0.932 without ensembling;</text>
+  <text x="555" y="1086" font-family="Arial, sans-serif" font-size="14" fill="#465966">18 small numerical datasets</text>
+  <text x="805" y="1031" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#152b3c">No ensemble: 1.30 s CPU</text>
+  <text x="805" y="1056" font-family="Arial, sans-serif" font-size="14" fill="#465966">0.052 s GPU per dataset</text>
+  <text x="805" y="1080" font-family="Arial, sans-serif" font-size="14" fill="#465966">32-permutation ensemble: 37.59 s</text>
+  <text x="805" y="1102" font-family="Arial, sans-serif" font-size="14" fill="#465966">CPU / 0.617 s GPU</text>
+  <text x="1160" y="1034" font-family="Arial, sans-serif" font-size="15" fill="#152b3c">Best fit: small, numerical,</text>
+  <text x="1160" y="1056" font-family="Arial, sans-serif" font-size="15" fill="#152b3c">clean datasets. Less suited to</text>
+  <text x="1160" y="1078" font-family="Arial, sans-serif" font-size="15" fill="#152b3c">missing/categorical inputs or</text>
+  <text x="1160" y="1100" font-family="Arial, sans-serif" font-size="15" fill="#152b3c">large tables in this version.</text>
+
+  <text x="64" y="1203" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#465966">INTERPRETATION</text>
+  <text x="190" y="1203" font-family="Arial, sans-serif" font-size="14" fill="#465966">Benchmark metrics are domain-specific. Hardware, input shape, batch size, and runtime change speed.</text>
+  <text x="64" y="1234" font-family="Arial, sans-serif" font-size="13" fill="#657782">Sources: Sanh et al. (2019); Sandler et al. (2018); Tan &amp; Le (2019); Li et al. (2021); Hollmann et al. (ICLR 2023). See README for links.</text>
+</svg>
